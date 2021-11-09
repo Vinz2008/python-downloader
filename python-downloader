@@ -1,0 +1,18 @@
+#!/usr/bin/python
+import requests
+from progressbar import ProgressBar
+import sys
+bar = ProgressBar(5)
+url = sys.argv[1]
+bar.update(1) 
+response = requests.get(url)
+bar.update(1) 
+length = len(url.split("/"))
+bar.update(1) 
+filename = url.split("/")[length-1]
+bar.update(1) 
+with open(filename,'wb') as f:
+    f.write(response.content)
+bar.update(1) 
+print("")
+
